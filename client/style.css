@@ -206,6 +206,14 @@ form {
   text-align: center;
 }
 
+.show{
+ display: flex;
+}
+
+.hide{
+  display: none;
+}
+
 .header {
   color: var(--color-primary-dark);
   font-size: var(--step-1);
@@ -619,3 +627,4 @@ button {
   background: #fff;
   color: var(--color-primary);
 }
+
