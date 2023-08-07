@@ -112,7 +112,7 @@ include('./config/db_connect.php');
                     <button class="ghost" id="signIn">Back</button>
                 </div>
                 <footer>
-                    <p>Inspired by <a href="https://codepen.io/Rittenhouse" target="_blank">Zaur Suleymanlı</a></p>
+                    <p>Inspired by <a href="https://codepen.io/Rittenhouse" target="_blank">Ocheni Augustine</a></p>
                 </footer>
             </div>
 
@@ -127,8 +127,8 @@ include('./config/db_connect.php');
                     <button class="ghost" id="loginbutton">Sign In</button>
                 </div>
                 <footer>
-                    <p>Inspired by <a href="https://codepen.io/Rittenhouse" target="_blank">Zaur Suleymanlı</a></p>
-                </footer>
+                    <p>Inspired by <a href="https://codepen.io/Rittenhouse" target="_blank">Ocheni Augustine</a></p>
+                    </footer>
             </div>
         </div>
     </div>

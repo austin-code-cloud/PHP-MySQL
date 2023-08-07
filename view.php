@@ -35,17 +35,39 @@ if (isset($_POST['view'])) {
             <th>id</th>
             <th>Name</th>
             <th>Email</th>
+            <th><?php if ($_SESSION['role'] === '1' || $_SESSION['role'] === '0') {
+                    echo 'Edit';
+                } ?></th>
+            <th><?php if ($_SESSION['role'] === '1' || $_SESSION['role'] === '0') {
+                    echo 'Delete';
+                } ?></th>
+           
+
+
         </tr>
     </thead>
     <tbody>
         <?php if (!empty($users)) { ?>
 
+            <?php $id = 1; ?>
+
             <?php for ($i = 0; $i < count($users); $i++) { ?>
                 <tr>
-                    <td><?php echo $users[$i]['id']; ?></td>
+                    <td><?php echo $id++ ?></td>
                     <td><?php echo $users[$i]['name']; ?></td>
                     <td><?php echo $users[$i]['email']; ?></td>
+                    <td><?php if ($_SESSION['role'] === '1') {
+                            echo '<form action = " " method = " "> <button type = "submit" name = "edit"> Edit </button> </form> ';
+                        } else if ($_SESSION['username'] === $users[$i]['email']) {
+                            echo '<form action = " " method = " "> <button type = "submit" name = "edit"> Edit </button> </form> ';
+                        } ?></td>
+                    <td><?php if ($_SESSION['role'] === '1') {
+                            echo '<form action = " " method = " "> <button type = "submit" name = "delete"> Delete </button> </form> ';
+                        }else if ($_SESSION['username'] === $users[$i]['email']) {
+                            echo '<form action = " " method = " "> <button type = "submit" name = "edit"> Delete </button> </form> ';
+                        } ?></td>
                 </tr>
+
 
             <?php } ?>
 

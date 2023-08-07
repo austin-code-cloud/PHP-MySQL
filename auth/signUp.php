@@ -9,6 +9,8 @@ if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($dbConnect, $_POST['name']);
     $password = mysqli_real_escape_string($dbConnect, $_POST['password']);
 
+    $hashed_pass = password_hash($password, PASSWORD_BCRYPT);
+
     $sql = "SELECT * FROM users WHERE email = '$email'";
 
     //make query & get result
@@ -24,11 +26,13 @@ if (isset($_POST['submit'])) {
     
 
     if (empty($users)){
-        $sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$password')";
+        $sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$hashed_pass')";
 
         if(mysqli_query($dbConnect, $sql)){
             $_SESSION['username'] = $email;
-            header('location:view.php');
+            $_SESSION['role'] = $users['role_as'];
+            header('location: ../dbPage.php');
+            
             $_SESSION['success'] = 'You are logged in';
         } else {
             echo 'query error: ' . mysqli_error($dbConnect);

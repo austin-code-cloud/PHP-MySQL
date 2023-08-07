@@ -2,11 +2,13 @@
 
 session_start();
 
+//check session
+
 include('./config/db_connect.php');
 
-    if($_SESSION['username'] == ''){
-        header('location: index.php');
-    } 
+if ($_SESSION['username'] == '') {
+    header('location: index.php');
+}
 
 ?>
 
@@ -17,7 +19,7 @@ include('./config/db_connect.php');
 
 
 
-    <div class="form-container  sign-in-container">
+    <div class="form-container  sign-in-container" style="margin-left: 11em;">
         <form action="view.php" method="POST">
             <div class="header">Database</div>
             <div class="social__media__container">

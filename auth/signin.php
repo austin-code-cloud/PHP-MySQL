@@ -6,8 +6,9 @@ if (isset($_POST['login'])) {
 
     $email = mysqli_real_escape_string($dbConnect, $_POST['email']);
     $password = mysqli_real_escape_string($dbConnect, $_POST['password']);
+    
 
-    $sql = 'SELECT email, password FROM users';
+    $sql = 'SELECT email, password, role_as FROM users';
 
     //make query & get result
 
@@ -21,11 +22,15 @@ if (isset($_POST['login'])) {
     // close connection
     mysqli_close($dbConnect);
     
+    
 
     for ($i = 0; $i < count($users); $i++) {
 
-        if ($users[$i]['email'] === $email && $users[$i]['password'] === $password){
+        $hashed_pass = password_verify($password, $users[$i]['password']);
+
+        if ($hashed_pass){
             $_SESSION['username'] = $email;
+            $_SESSION['role'] = $users[$i]['role_as'];
             header('location: ../dbPage.php');
             $_SESSION['success'] = 'you are logged in';
         } else {
